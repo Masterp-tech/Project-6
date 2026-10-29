@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Body Mass Index Calculator Demo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <a class="brand" href="#">
+            <span class="brand-mark">≋</span>
+          </a>
+
+          <div class="hero-text">
+            <h1>Body Mass<br />Index Calculator</h1>
+
+            <p class="intro">
+              Better understand your weight in relation to your height using our
+              body mass index (BMI) calculator. While BMI is not the sole
+              determinant of a healthy weight, it offers a valuable starting
+              point to evaluate your overall health and well-being.
+            </p>
+          </div>
+        </div>
+
+        <form class="calculator" id="bmi-form">
+          <h2>Enter your details below</h2>
+
+          <div class="unit-choice">
+            <label class="radio-option">
+              <input type="radio" name="unit" value="metric" checked />
+              <span class="radio-ui"></span>
+              Metric
+            </label>
+
+            <label class="radio-option">
+              <input type="radio" name="unit" value="imperial" />
+              <span class="radio-ui"></span>
+              Imperial
+            </label>
+          </div>
+
+          <!-- METRIC INPUTS -->
+          <div class="fields" id="metric-fields">
+            <label class="field">
+              <span>Height</span>
+              <div class="input-wrap">
+                <input
+                  id="height-cm"
+                  type="number"
+                  min="1"
+                  placeholder="0"
+                  step="any"
+                />
+                <b>cm</b>
+              </div>
+            </label>
+
+            <label class="field">
+              <span>Weight</span>
+              <div class="input-wrap">
+                <input
+                  id="weight-kg"
+                  type="number"
+                  min="1"
+                  placeholder="0"
+                  step="any"
+                />
+                <b>kg</b>
+              </div>
+            </label>
+          </div>
+
+          <div class="fields hidden" id="imperial-fields">
+            <label class="field">
+              <span>Height</span>
+              <div class="input-wrap split-input">
+                <input id="height-ft" type="number" min="0" placeholder="0" />
+                <b>ft</b>
+
+                <input
+                  id="height-in"
+                  type="number"
+                  min="0"
+                  max="11.99"
+                  placeholder="0"
+                  step="any"
+                />
+                <b>in</b>
+              </div>
+            </label>
+
+            <label class="field">
+              <span>Weight</span>
+              <div class="input-wrap">
+                <input
+                  id="weight-st"
+                  type="number"
+                  min="0"
+                  placeholder="0"
+                  step="any"
+                />
+                <b>st</b>
+              </div>
+
+              <div class="input-wrap extra-weight">
+                <input
+                  id="weight-lb"
+                  type="number"
+                  min="0"
+                  placeholder="0"
+                  step="any"
+                />
+                <b>lbs</b>
+              </div>
+            </label>
+          </div>
+
+          <div class="result-panel" aria-live="polite">
+            <div id="welcome-result">
+              <h3>Welcome!</h3>
+              <p>
+                Enter your height and weight and you'll see your BMI result
+                here.
+              </p>
+            </div>
+
+            <div id="calculated-result" class="hidden">
+              <p class="result-label">Your BMI is...</p>
+
+              <div class="result-line">
+                <strong id="bmi-number">0.0</strong>
+                <span id="bmi-category"></span>
+              </div>
+
+              <p id="result-description"></p>
+            </div>
+          </div>
+
+          <p class="form-error" id="form-error"></p>
+        </form>
+      </section>
+
+      <section class="meaning section-shell">
+        <div class="person-visual">
+          <div class="person-backdrop"></div>
+
+          <img src="./Images/image1.jpg" alt="Smiling man" />
+        </div>
+
+        <div class="meaning-copy">
+          <h2>What your BMI result<br />means</h2>
+
+          <p>
+            A BMI range of 18.5 to 24.9 is commonly considered a healthy weight
+            range for adults. BMI is one measure of health and does not tell the
+            whole story about your body or well-being.
+          </p>
+
+          <p>
+            Use your result as a starting point for a conversation with a
+            qualified health professional.
+          </p>
+        </div>
+      </section>
+
+      <section class="habits">
+        <article class="habit-card">
+          <span class="icon-bubble pink">♡</span>
+          <h3>Healthy eating</h3>
+          <p>
+            Enjoy a variety of nourishing foods to support energy, growth, and
+            overall well-being.
+          </p>
+        </article>
+
+        <article class="habit-card">
+          <span class="icon-bubble orange">↗</span>
+          <h3>Regular exercise</h3>
+          <p>
+            Movement you enjoy can support fitness, mood, and long-term health.
+          </p>
+        </article>
+
+        <article class="habit-card">
+          <span class="icon-bubble aqua">☾</span>
+          <h3>Adequate sleep</h3>
+          <p>
+            Consistent, restful sleep supports mental clarity, emotional
+            balance, and recovery.
+          </p>
+        </article>
+      </section>
+
+      <section class="limitations section-shell">
+        <div class="limitations-intro">
+          <h2>Limitations of BMI</h2>
+
+          <p>
+            Although BMI is often a practical indicator of weight in relation to
+            height, it is not suited for every person. Some groups should
+            carefully consider their BMI results, and in certain cases the
+            measurement may not be useful on its own.
+          </p>
+
+          <div class="curve"></div>
+        </div>
+
+        <div class="limitation-cards">
+          <article class="limitation-card gender">
+            <span class="mini-icon coral">♀</span>
+            <h3>Gender</h3>
+            <p>
+              Body composition can vary with age and development. BMI should be
+              interpreted in context rather than used as a complete picture of
+              health.
+            </p>
+          </article>
+
+          <article class="limitation-card">
+            <span class="mini-icon aqua">♙</span>
+            <h3>Age</h3>
+            <p>
+              Body composition changes as people age, so BMI may not fully
+              reflect body composition in older adults.
+            </p>
+          </article>
+
+          <article class="limitation-card">
+            <span class="mini-icon purple">♧</span>
+            <h3>Muscle</h3>
+            <p>
+              BMI does not distinguish muscle from fat, so it may not reflect
+              the health of people with higher muscle mass.
+            </p>
+          </article>
+
+          <article class="limitation-card">
+            <span class="mini-icon yellow">◉</span>
+            <h3>Pregnancy</h3>
+            <p>
+              Pregnancy changes weight and body composition. BMI should be
+              discussed with a healthcare professional during pregnancy.
+            </p>
+          </article>
+
+          <article class="limitation-card">
+            <span class="mini-icon pink">♙</span>
+            <h3>Race and ethnicity</h3>
+            <p>
+              Health risks can vary across populations, and the same BMI may not
+              mean the same thing for everyone.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
